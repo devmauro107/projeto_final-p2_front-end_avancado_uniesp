@@ -25,10 +25,20 @@ const livroMock: Livro = {
 }
 
 export function Details() {
+
     const [carregando, setCarregando] = useState<boolean>(true);
+    const [livro, setLivro] = useState<Livro | null>(null)
+    const [erro, setErro] = useState<string | null>(null)
+
     useEffect(() => {
         const timer = setTimeout(() => {
-            setCarregando(false);
+            try {
+                setLivro(livro);
+            } catch (e) {
+                setErro('Falha ao carregar as informações do livro.');
+            } finally {
+                setCarregando(false);
+            }
         }, 2000);
 
         return () => clearTimeout(timer);
@@ -38,6 +48,15 @@ export function Details() {
         return (
             <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
                 <h2>⏳ Carregando detalhes do livro...</h2>
+            </div>
+        )
+    }
+
+    if (erro || !livro) {
+        return (
+            <div style={{ padding: '20px', fontFamily: 'sans-serif', color: '#c00' }}>
+                <h2>❌ Não foi possível carregar os detalhes do livro.</h2>
+                <p>{erro || 'Livro não encontrado ou indisponível no momento.'}</p>
             </div>
         )
     }
