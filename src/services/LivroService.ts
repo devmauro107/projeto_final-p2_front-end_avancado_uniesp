@@ -1,6 +1,13 @@
 import type { GoogleBooksItemDTO } from "../types/GoogleBooks/GoogleBook";
 import type { Livro } from "../types/Livro/Livro";
 
+export class ErroLivros extends Error {
+  constructor(mensagem: string) {
+    super(mensagem);
+    this.name = "ErroLivros";
+  }
+}
+
 export class LivroService {
   private static mapear(item: GoogleBooksItemDTO): Livro {
     const book: Livro = {
@@ -54,5 +61,4 @@ export class LivroService {
 
     return book;
   }
-
 }
