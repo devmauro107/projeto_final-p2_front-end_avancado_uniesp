@@ -1,5 +1,7 @@
+import axios from "axios";
 import type { GoogleBooksItemDTO } from "../types/GoogleBooks/GoogleBook";
 import type { Livro } from "../types/Livro/Livro";
+
 
 export class ErroLivros extends Error {
   constructor(mensagem: string) {
@@ -60,5 +62,22 @@ export class LivroService {
     }
 
     return book;
+  }
+
+  private static criarErro(erro: unknown): ErroLivros {
+    if (erro instanceof ErroLivros) {
+      return erro;
+    } else if (axios.isAxiosError(erro)) {
+      if (erro.code === "ECONNABORTED") {
+        return new ErroLivros("A BUSCA DEMOROU DEMAIS, TENTE NOVAMENTE");
+      } else if (!erro.response) {
+        return new ErroLivros("Sem conexão com a internet");
+      } else if (erro.response.status === 404) {
+        return new ErroLivros("Livro não encontrado");
+      } else if (erro.response.status === 429) {
+        return new ErroLivros("Atingiu a cota P/dia ou P/min");
+      }
+    }
+    return new ErroLivros("Erro Inesperado");
   }
 }
