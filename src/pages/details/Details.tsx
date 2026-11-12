@@ -1,3 +1,4 @@
+import {useEffect, useState} from 'react'
 
 interface Livro {
     id: string
@@ -24,6 +25,23 @@ const livroMock: Livro = {
 }
 
 export function Details() {
+    const [carregando, setCarregando] = useState<boolean>(true);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setCarregando(false);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (carregando) {
+        return (
+            <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
+                <h2>⏳ Carregando detalhes do livro...</h2>
+            </div>
+        )
+    }
+
     return (
         <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
             <img
