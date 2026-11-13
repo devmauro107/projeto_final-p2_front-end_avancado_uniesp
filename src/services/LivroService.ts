@@ -1,7 +1,11 @@
 import axios from "axios";
-import type { GoogleBooksItemDTO } from "../types/GoogleBooks/GoogleBook";
+import type {
+  GoogleBooksItemDTO,
+  GoogleBooksSearchResponseDTO,
+} from "../types/GoogleBooks/GoogleBook";
 import type { Livro } from "../types/Livro/Livro";
-
+import type { ResultadoBuscaLivro } from "../types/Livro/ResultadoBuscaLivro";
+import { api } from "./api";
 
 export class ErroLivros extends Error {
   constructor(mensagem: string) {
@@ -79,5 +83,35 @@ export class LivroService {
       }
     }
     return new ErroLivros("Erro Inesperado");
+  }
+
+  public static async buscar(termo: string): Promise<ResultadoBuscaLivro> {
+    const termoLimpo = termo.trim();
+
+    if (termoLimpo === "") {
+      return {
+        livros: [],
+        total: 0,
+      };
+    }
+
+    try {
+      const resposta = await api.get<GoogleBooksSearchResponseDTO>("/volumes", {
+        params: {
+          q: termoLimpo,
+          maxResults: 10,
+          printType: "books",
+        },
+      });
+
+      const dados = resposta.data;
+
+      return {
+        livros: (dados.items ?? []).map((item) => LivroService.mapear(item)),
+        total: dados.totalItems,
+      };
+    } catch (error) {
+      throw LivroService.criarErro(error);
+    }
   }
 }
