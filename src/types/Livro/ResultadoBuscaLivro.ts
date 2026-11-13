@@ -1,5 +1,6 @@
 import type { Livro } from "./Livro";
 
 export interface ResultadoBuscaLivro {
-  livros: Livro[];
+  livros: Livro[],
+  total: number
 }
