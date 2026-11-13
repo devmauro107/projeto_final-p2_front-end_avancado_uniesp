@@ -114,4 +114,14 @@ export class LivroService {
       throw LivroService.criarErro(error);
     }
   }
+
+  public static async obterPorId(id: string): Promise<Livro> {
+    try {
+      const livroRetorno = await api.get<GoogleBooksItemDTO>(`/volumes/${encodeURIComponent(id)}`);
+
+      return LivroService.mapear(livroRetorno.data);
+    } catch (error) {
+      throw LivroService.criarErro(error);
+    }
+  }
 }
