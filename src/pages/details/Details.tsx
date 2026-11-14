@@ -33,7 +33,7 @@ export function Details() {
     useEffect(() => {
         const timer = setTimeout(() => {
             try {
-                setLivro(livro);
+                setLivro(livroMock);
             } catch (e) {
                 setErro('Falha ao carregar as informações do livro.');
             } finally {
@@ -64,17 +64,17 @@ export function Details() {
     return (
         <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
             <img
-                src={livroMock.capaUrl}
-                alt={livroMock.titulo}
+                src={livro.capaUrl}
+                alt={livro.titulo}
                 style={{ width: '200px', borderRadius: '8px' }}
             />
-            <h1>{livroMock.titulo}</h1>
-            <p><strong>Autor(es):</strong> {livroMock.autores.join(', ')}</p>
-            <p><strong>Editora:</strong> {livroMock.editora} ({livroMock.dataPublicacao})</p>
-            <p><strong>Páginas:</strong> {livroMock.numeroPaginas} | <strong>ISBN:</strong> {livroMock.isbn}</p>
+            <h1>{livro.titulo}</h1>
+            <p><strong>Autor(es):</strong> {livro.autores.join(', ')}</p>
+            <p><strong>Editora:</strong> {livro.editora} ({livro.dataPublicacao})</p>
+            <p><strong>Páginas:</strong> {livro.numeroPaginas} | <strong>ISBN:</strong> {livro.isbn}</p>
             <hr />
             <h3>Sinopse</h3>
-            <p>{livroMock.descricao}</p>
+            <p>{livro.descricao}</p>
         </div>
     )
 }
