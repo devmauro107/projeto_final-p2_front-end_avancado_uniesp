@@ -1,16 +1,5 @@
 import {useEffect, useState} from 'react'
-
-interface Livro {
-    id: string
-    titulo: string
-    autores: string[]
-    descricao?: string
-    capaUrl?: string
-    editora?: string
-    dataPublicacao?: string
-    numeroPaginas?: number
-    isbn?: string
-}
+import type { Livro } from '../../types/Livro/Livro'
 
 const livroMock: Livro = {
     id: '1',
