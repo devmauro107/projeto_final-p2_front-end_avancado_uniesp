@@ -1,17 +1,6 @@
 import {useEffect, useState} from 'react'
 import type { Livro } from '../../types/Livro/Livro'
-
-const livroMock: Livro = {
-    id: '1',
-    titulo: 'O Senhor dos Anéis: A Sociedade do Anel',
-    autores: ['J.R.R. Tolkien'],
-    descricao: 'Uma jornada épica pela Terra Média para destruir o Um Anel.',
-    capaUrl: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400',
-    editora: 'HarperCollins',
-    dataPublicacao: '1954',
-    numeroPaginas: 423,
-    isbn: '978-8595084759'
-}
+import { LivroService } from '../../services/LivroService'
 
 export function Details() {
 
@@ -20,17 +9,24 @@ export function Details() {
     const [erro, setErro] = useState<string | null>(null)
 
     useEffect(() => {
-        const timer = setTimeout(() => {
+        async function carregarLivro() {
             try {
-                setLivro(livroMock);
+                setCarregando(true)
+                const dadosDoLivro = await LivroService.obterPorId('zyTCAlFPjgYC');
+                setLivro(dadosDoLivro);
             } catch (e) {
-                setErro('Falha ao carregar as informações do livro.');
+                if (e instanceof Error) {
+                    setErro(e.message);
+                } else {
+                    setErro('Falha ao carregar as informações do livro.');
+                }
+
             } finally {
                 setCarregando(false);
             }
-        }, 2000);
+        }
 
-        return () => clearTimeout(timer);
+        carregarLivro();
     }, []);
 
     if (carregando) {
