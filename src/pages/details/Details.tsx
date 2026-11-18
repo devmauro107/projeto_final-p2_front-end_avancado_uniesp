@@ -2,32 +2,39 @@ import {useEffect, useState} from 'react'
 import type { Livro } from '../../types/Livro/Livro'
 import { LivroService } from '../../services/LivroService'
 
-export function Details() {
+interface DetailsProps {
+    idLivro?: string;
+}
+
+export function Details({idLivro = 'zyTCAlFPjgYC'}: DetailsProps) {
 
     const [carregando, setCarregando] = useState<boolean>(true);
     const [livro, setLivro] = useState<Livro | null>(null)
     const [erro, setErro] = useState<string | null>(null)
 
-    useEffect(() => {
-        async function carregarLivro() {
-            try {
-                setCarregando(true)
-                const dadosDoLivro = await LivroService.obterPorId('zyTCAlFPjgYC');
-                setLivro(dadosDoLivro);
-            } catch (e) {
-                if (e instanceof Error) {
-                    setErro(e.message);
-                } else {
-                    setErro('Falha ao carregar as informações do livro.');
-                }
+    async function carregarLivro(id : string) {
+        try {
+            setCarregando(true);
+            setErro(null);
 
-            } finally {
-                setCarregando(false);
+            const dadosDoLivro = await LivroService.obterPorId(id);
+            setLivro(dadosDoLivro);
+
+        } catch (e) {
+            if (e instanceof Error) {
+                setErro(e.message);
+            } else {
+                setErro('Falha ao carregar as informaçãos do livro');
             }
-        }
 
-        carregarLivro();
-    }, []);
+        } finally {
+            setCarregando(false);
+        }
+    }
+
+    useEffect(() =>{
+        carregarLivro(idLivro);
+    }, [idLivro]);
 
     if (carregando) {
         return (
@@ -40,7 +47,7 @@ export function Details() {
     if (erro || !livro) {
         return (
             <div style={{ padding: '20px', fontFamily: 'sans-serif', color: '#c00' }}>
-                <h2>❌ Não foi possível carregar os detalhes do livro.</h2>
+                <h2> Não foi possível carregar os detalhes do livro.</h2>
                 <p>{erro || 'Livro não encontrado ou indisponível no momento.'}</p>
             </div>
         )
