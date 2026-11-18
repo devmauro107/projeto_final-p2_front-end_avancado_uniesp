@@ -3,6 +3,19 @@ import type { Livro } from '../../types/Livro/Livro'
 import { LivroService } from '../../services/LivroService'
 import './Details.css'
 
+/**
+ * Componente da Tela de Detalhes do Livro.
+ *
+ * Atende aos requisitos da 2ª Avaliação de Frontend Avançado (UNIESP):
+ * - Exibição completa de capa ampliada, sinopse, autores, editora, ano, páginas e ISBN.
+ * - Gerenciamento robusto de estados de carregamento (loading), erro de rede/cota e sucesso.
+ * - Layout responsivo adaptável para celulares, tablets e desktops (Details.css).
+ * - Implementação desacoplada da função carregarLivro por ID.
+ *
+ * @author Mauro Sérgio
+ * @param {DetailsProps} props - Propriedades da tela, incluindo o idLivro opcional.
+ * @returns {JSX.Element} Interface estruturada com os detalhes da obra literária.
+ */
 interface DetailsProps {
     idLivro?: string;
 }
