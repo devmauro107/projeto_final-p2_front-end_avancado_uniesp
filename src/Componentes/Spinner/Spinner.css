@@ -1,0 +1,60 @@
+
+/* CONTAINER DO SPINNER */
+
+.biblioteca-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  width: 100%;
+  min-height: 280px;
+  padding: 40px 16px;
+  box-sizing: border-box;
+}
+
+/* CÍRCULO ANIMADO */
+
+.biblioteca-loading-anel {
+  width: 52px;
+  height: 52px;
+
+  border: 5px solid var(--accent-bg);
+  border-top-color: var(--accent);
+  border-right-color: var(--accent);
+
+  border-radius: 50%;
+
+  animation: biblioteca-girar 0.8s linear infinite;
+}
+
+/* TEXTO */
+
+.biblioteca-loading-texto {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+/* ANIMAÇÃO */
+
+@keyframes biblioteca-girar {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+  .biblioteca-loading-anel {
+    animation: none;
+  }
+}

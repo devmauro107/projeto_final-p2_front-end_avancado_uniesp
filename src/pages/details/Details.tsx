@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import type { Livro } from '../../types/Livro/Livro'
 import { LivroService } from '../../services/LivroService'
+import { Spinner } from '../../Componentes/Spinner/Spinner'
 import './Details.css'
+
 
 /**
  * Componente da Tela de Detalhes do Livro.
@@ -55,7 +57,7 @@ export function Details({ idLivro = 'zyTCAlFPjgYC' }: DetailsProps) {
     }, [idLivro]);
 
     if (carregando) {
-        return <h2 className="detalhes-alerta">⏳ Carregando detalhes do livro...</h2>
+        return <Spinner mensagem="Carregando detalhes do livro..." />;
     }
 
     if (erro || !livro) {
