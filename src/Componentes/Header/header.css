@@ -1,0 +1,107 @@
+
+/* HEADER DA BIBLIOTECA */
+
+.biblioteca-header {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 36px;
+
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* LOGO */
+
+.biblioteca-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: var(--text-h);
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.biblioteca-logo strong {
+  color: var(--accent);
+}
+
+.biblioteca-logo-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+
+  background: var(--accent-bg);
+  font-size: 23px;
+}
+
+/* NAVEGAÇÃO */
+
+.biblioteca-navegacao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.biblioteca-link {
+  padding: 10px 18px;
+  border-radius: 10px;
+
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.biblioteca-link:hover {
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.biblioteca-link.ativo {
+  color: var(--accent);
+  background: var(--accent-bg);
+  font-weight: 600;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 600px) {
+  .biblioteca-header {
+    padding: 16px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .biblioteca-logo {
+    font-size: 18px;
+  }
+
+  .biblioteca-navegacao {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .biblioteca-link {
+    flex: 1;
+    text-align: center;
+  }
+}
