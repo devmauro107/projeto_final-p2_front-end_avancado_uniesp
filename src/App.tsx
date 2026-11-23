@@ -2,6 +2,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { Header } from './Componentes/Header/header';
+import { Footer } from './Componentes/Footer/footer';
+
 import { Details } from './pages/details/Details';
 import { Sobre } from './pages/Sobre/Sobre';
 
@@ -12,12 +14,11 @@ function App() {
     <BrowserRouter>
       <div className="site-layout">
 
-        {/* HEADER */}
         <Header />
 
-        {/* CONTEÚDO DAS PÁGINAS */}
-        <div className="site-content">
+        <main className="site-content">
           <Routes>
+
             <Route
               path="/"
               element={<Details />}
@@ -27,8 +28,11 @@ function App() {
               path="/sobre"
               element={<Sobre />}
             />
+
           </Routes>
-        </div>
+        </main>
+
+        <Footer />
 
       </div>
     </BrowserRouter>
