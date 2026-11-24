@@ -1,131 +1,160 @@
-# projeto_final-p2_front-end_avancado_uniesp
-Aplicação web desenvolvida em React, TypeScript e Vite para a avaliação de FrontEnd Avançado.
+# Biblioteca Digital
 
-# Nome do Projeto
+## Sobre o projeto
 
-> projeto_final-p2_front-end_avancado_uniesp.
+A Biblioteca Digital é uma aplicação web desenvolvida como projeto final da disciplina de Tecnologia para Front-End Avançado do UNIESP.
 
-**2ª Avaliação – Tecnologia para Frontend Avançado**
+O projeto tem como objetivo proporcionar uma interface intuitiva e responsiva para pesquisa, visualização e consulta de informações sobre livros, utilizando dados provenientes de uma API externa.
 
-- Centro Universitário UNIESP · 
-- Sistemas para Internet · 
-- 4º período · 
-- Noite · 
-- Semestre 2026.2
-- **Professor:** Álekiss Manço de Mélo
+## Tecnologias utilizadas
 
----
+- React
+- TypeScript
+- Vite
+- Material UI (MUI)
+- React Router DOM
+- Emotion
+- HTML e CSS
+- Git e GitHub
+- Trello
 
-## 👥 Integrantes do Grupo
+## Funcionalidades previstas
 
-> O enunciado exige o **nome completo de todos os integrantes** neste README.
+- Pesquisa de livros.
+- Listagem de livros em cards.
+- Visualização de detalhes dos livros.
+- Navegação entre páginas.
+- Consumo de API externa.
+- Tratamento de erros e estados de carregamento.
+- Interface responsiva.
+- Tema visual personalizado.
+- Página de informações sobre o projeto.
+- Tratamento de rotas inexistentes.
 
-| # | Nome completo | Matrícula | Branch | Responsabilidade principal | GitHub |
-|---|---------------|-----------|--------|----------------------------|--------|
-| 1 | [Nome completo] | [Matrícula] | `feature/[nome]` | [Ex.: arquitetura, rotas, README] | [@usuario] |
-| 2 | [Nome completo] | [Matrícula] | `feature/[nome]` | [Ex.: API e tipos] | [@usuario] |
-| 3 | [Nome completo] | [Matrícula] | `feature/[nome]` | [Ex.: página Home] | [@usuario] |
-| 4 | [Nome completo] | [Matrícula] | `feature/[nome]` | [Ex.: componentes e Detalhes] | [@usuario] |
-| 5 | [Nome completo] | [Matrícula] | `feature/[nome]` | [Ex.: interface, Favoritos, testes] | [@usuario] |
+## Como executar o projeto
 
-**Responsável pelo envio no Google Classroom:** [Nome]
+### Pré-requisitos
 
----
+- Node.js
+- npm
+- Git
 
-## 📌 Sobre o Projeto
+### Instalação
 
-- **Tema:** [Descreva em uma frase o que a aplicação faz]
-- **API utilizada:** [Nome e link da documentação]
-- **Biblioteca de componentes:** [MUI / Chakra UI / Ant Design / outra]
-- **Telas:** [Home · Detalhes · Sobre · Favoritos · ...]
-- **Repositório:** [link]
-
----
-
-## 🎯 Objetivo da Avaliação
-
-Desenvolver e apresentar uma **aplicação web completa em React com TypeScript e Vite**, aplicando componentes, hooks, rotas, consumo de API, interface, usabilidade e boas práticas.
-
-> Será uma aplicação **bem estruturada, funcional e agradável de usar**
-
----
-
-## 📋 Regras de Entrega
-
-1. O código-fonte é enviado por **apenas um integrante** do grupo.
-2. Este README deve conter o **nome completo de todos os integrantes**.
-3. **Cada aluno desenvolve na sua própria branch** e depois faz merge na branch principal. É assim que o professor identifica a contribuição de cada um para atribuir a nota e fazer as perguntas.
-4. A presença na apresentação é obrigatória.
-
----
-
-## 🤖 Uso de Inteligência Artificial
-
-Permitido e incentivado, **desde que o grupo compreenda e saiba explicar o código apresentado**. Código gerado sem entendimento pode causar perda parcial ou total da nota.
-
----
-
-## 🧰 Tecnologias
-
-- React + TypeScript + Vite
-- [Biblioteca de componentes]
-- React Router
-- [API utilizada]
-
-## 🗂️ Estrutura de Pastas
-
-```
-src/
-├── components/   # componentes reutilizáveis
-├── pages/        # telas (Home, Detalhes, Sobre, ...)
-├── services/     # comunicação com a API
-├── hooks/        # hooks customizados
-├── types/        # interfaces TypeScript
-└── App.tsx       # rotas e layout
-```
-
-## ▶️ Como Executar
+Clone o repositório:
 
 ```bash
-git clone [url-do-repositorio]
-cd [nome-da-pasta]
+git clone https://github.com/devmauro107/projeto_final-p2_front-end_avancado_uniesp.git
+```
+
+Acesse a pasta do projeto:
+
+```bash
+cd projeto_final-p2_front-end_avancado_uniesp
+```
+
+Instale as dependências:
+
+```bash
 npm install
+```
+
+Execute a aplicação:
+
+```bash
 npm run dev
 ```
 
+Acesse no navegador o endereço informado pelo Vite, normalmente:
+
+http://localhost:5173
+
+### Build do projeto
+
+```bash
+npm run build
+```
+
+### Verificação de código
+
+```bash
+npm run lint
+```
+
+## Estrutura planejada do projeto
+
+```text
+src/
+├── assets/
+├── components/
+│   ├── BookCard/
+│   ├── Header/
+│   └── Footer/
+├── pages/
+│   ├── Home/
+│   ├── Details/
+│   └── About/
+├── routes/
+│   └── AppRoutes.tsx
+├── services/
+├── types/
+├── theme/
+│   └── theme.ts
+├── App.tsx
+├── main.tsx
+└── index.css
+```
+
+## Rotas da aplicação
+
+| Rota | Descrição |
+|---|---|
+| / | Página inicial |
+| /livro/:id | Detalhes de um livro |
+| /sobre | Informações sobre o projeto |
+| * | Página não encontrada |
+
+## Arquitetura
+
+O projeto utiliza uma arquitetura organizada por responsabilidades, separando componentes reutilizáveis, páginas, serviços de comunicação com a API, tipagens, rotas e configurações globais.
+
+O Material UI é utilizado como biblioteca de componentes, juntamente com um tema personalizado para garantir consistência visual em toda a aplicação.
+
+O React Router DOM é responsável pela navegação entre as páginas, incluindo rotas dinâmicas para a visualização dos detalhes dos livros.
+
+## API externa
+
+API de consulta de livros — identificação a ser confirmada pela equipe responsável pela integração.
+
+## Organização e desenvolvimento
+
+O desenvolvimento é realizado de forma colaborativa, utilizando Git, GitHub e Trello para organização das tarefas, controle de versões e acompanhamento do progresso.
+
+Cada integrante é responsável por uma parte específica do projeto, desenvolvida em sua respectiva branch.
+
+| Responsabilidade | Branch planejada |
+|---|---|
+| Arquitetura e configuração | feature/integrante-1-setup |
+| Serviços e tipagem | feature/integrante-2-api |
+| Home e listagem | feature/integrante-3-home |
+| Detalhes | feature/integrante-4-details |
+| Sobre e componentes globais | feature/integrante-5-about |
+
+## Integrantes
+
+- Marcelo Pereira de Figueiredo Filho
+- Mauro Sergio Souza de Oliveira
+- Samantha Hellen da Cunha Lima
+- João Lucas Pereira Monteiro
+- Letícia Santos de Lima
+
+## Informações acadêmicas
+
+- Instituição: UNIESP
+- Disciplina: Tecnologia para Front-End Avançado
+- Professor: Álekiss Mélo
+- Ano: 2026
+
 ---
 
-## 🔀 Fluxo de Trabalho com Git
-
-1. Criar a branch pessoal a partir da principal: `git checkout -b feature/[nome]`
-2. Fazer commits pequenos e descritivos.
-3. Abrir Pull Request para a branch principal e pedir revisão de outro integrante.
-4. Fazer merge e atualizar a branch local antes de continuar.
-
----
-
-## ☑️ Checklist de Acompanhamento
-
-**Requisitos técnicos**
-- [ ] Componentes reutilizáveis com props, usados em mais de uma página
-- [ ] Biblioteca de componentes instalada e em uso
-- [ ] Pelo menos 3 telas com navegação funcional
-- [ ] `useState` e `useEffect` usados de forma adequada
-- [ ] Requisição a API externa com exibição dinâmica
-- [ ] Tratamento de erros (falha de requisição e dado inexistente)
-- [ ] Estados de loading visíveis
-- [ ] Pastas organizadas e código limpo
-
-**Interface e funcionamento**
-- [ ] Layout consistente (cores, espaçamento, tipografia)
-- [ ] Responsivo (celular, tablet e desktop)
-- [ ] Sem erros no console
-- [ ] Sem falhas de navegação
-- [ ] `npm run build` sem erros
-
-**Entrega e apresentação**
-- [ ] Todas as branches mescladas na principal, com histórico de cada integrante
-- [ ] README com o nome completo de todos os integrantes
-- [ ] Código enviado no Classroom por um integrante até 29/11/2026
-- [ ] Todos sabem explicar hooks, componentes, rotas e API
-- [ ] Todos os integrantes participam da apresentação
+Projeto desenvolvido para fins acadêmicos.
