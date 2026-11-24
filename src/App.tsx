@@ -1,46 +1,47 @@
-import { Box, Button, Container, Typography } from '@mui/material';
+import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import { Link } from 'react-router-dom';
+
+import AppRoutes from './routes/AppRoutes';
 
 function App() {
   return (
-    <Container maxWidth="md">
-      <Box
-        sx={{
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: 2,
-          textAlign: 'center',
-        }}
-      >
-        <MenuBookIcon
-          color="primary"
-          sx={{ fontSize: 80 }}
-        />
+    <Box sx={{ minHeight: '100vh' }}>
+      <AppBar position="static">
+        <Toolbar sx={{ flexWrap: 'wrap', gap: 1, py: 1 }}>
+          <MenuBookIcon sx={{ mr: 1 }} />
 
-        <Typography variant="h3" color="primary">
-          Biblioteca Digital
-        </Typography>
+          <Typography
+            variant="h6"
+            sx={{ flexGrow: 1 }}
+          >
+            Biblioteca Digital
+          </Typography>
 
-        <Typography color="text.secondary">
-          Projeto de Front-End Avançado - UNIESP
-        </Typography>
+          <Button color="inherit" component={Link} to="/">
+            Início
+          </Button>
 
-        <Typography color="text.secondary">
-          Ambiente e tema configurados com sucesso!
-        </Typography>
+          <Button
+            color="inherit"
+            component={Link}
+            to="/livro/1"
+          >
+            Detalhes
+          </Button>
 
-        <Button variant="contained" color="primary">
-          Material UI funcionando
-        </Button>
+          <Button
+            color="inherit"
+            component={Link}
+            to="/sobre"
+          >
+            Sobre
+          </Button>
+        </Toolbar>
+      </AppBar>
 
-        <Button variant="contained" color="secondary">
-          Tema personalizado
-        </Button>
-      </Box>
-    </Container>
+      <AppRoutes />
+    </Box>
   );
 }
 
