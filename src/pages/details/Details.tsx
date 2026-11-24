@@ -6,13 +6,12 @@ import './Details.css'
 /**
  * Componente da Tela de Detalhes do Livro.
  *
- * Atende aos requisitos da 2ª Avaliação de Frontend Avançado (UNIESP):
+ * - Atende aos requisitos:
  * - Exibição completa de capa ampliada, sinopse, autores, editora, ano, páginas e ISBN.
  * - Gerenciamento robusto de estados de carregamento (loading), erro de rede/cota e sucesso.
  * - Layout responsivo adaptável para celulares, tablets e desktops (Details.css).
  * - Implementação desacoplada da função carregarLivro por ID.
  *
- * @author Mauro Sérgio
  * @param {DetailsProps} props - Propriedades da tela, incluindo o idLivro opcional.
  * @returns {JSX.Element} Interface estruturada com os detalhes da obra literária.
  */
@@ -31,20 +30,14 @@ export function Details({ idLivro = 'zyTCAlFPjgYC' }: DetailsProps) {
             setErro(null);
             const dadosDoLivro = await LivroService.obterPorId(id);
             setLivro(dadosDoLivro);
-        } catch (e) {
-            setLivro({
-                id: 'zyTCAlFPjgYC',
-                titulo: 'The Google Story',
-                autores: ['David A. Vise', 'Mark Malseed'],
-                descricao: 'Um olhar fascinante e detalhado sobre a criação e a ascensão meteórica do Google, ' +
-                    'desde um projeto de dormitório universitário em Stanford até se tornar a ferramenta ' +
-                    'de busca mais poderosa do planeta.',
-                capaUrl: 'https://books.google.com/books/content?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
-                editora: 'Bantam Dell Pub Group',
-                dataPublicacao: '2005-11-15',
-                numeroPaginas: 334,
-                isbn: '9780553804577'
-            });
+        } catch (e: unknown) {
+            console.error("Erro ao carregar livro:", e);
+            if (e instanceof Error) {
+                setErro(e.message);
+            } else {
+                setErro("Não foi possível carregar os detalhes do livro.");
+            }
+
         } finally {
             setCarregando(false);
         }
@@ -59,7 +52,7 @@ export function Details({ idLivro = 'zyTCAlFPjgYC' }: DetailsProps) {
     }
 
     if (erro || !livro) {
-        return <h2 className="detalhes-alerta detalhes-erro">❌ {erro || 'Livro não encontrado.'}</h2>
+        return <h2 className="detalhes-alerta detalhes-erro">{erro || 'Livro não encontrado.'}</h2>
     }
 
     return (
