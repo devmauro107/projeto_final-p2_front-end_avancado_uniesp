@@ -21,8 +21,19 @@
     height: auto;
     border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    object-fit: cover;
     flex-shrink: 0;
+}
+
+/* Capa padrão, exibida quando o livro não tem imagem */
+.detalhes-capa-vazia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 2 / 3;
+    background: #d9d9d9;
+    color: #555;
+    font-weight: bold;
+    box-shadow: none;
 }
 
 /* Coluna com as informações do livro */
@@ -40,11 +51,11 @@
 
 .detalhes-autores {
     font-size: 1.1rem;
-    color: #7f8c8d;
+    color: #5f6b6c;
     margin-bottom: 20px;
 }
 
-/* "Etiquetas" modernas para Editora, Data, Páginas e ISBN */
+/* "Etiquetas" modernas para Editora, Ano, Páginas e ISBN */
 .detalhes-metadados {
     display: flex;
     flex-wrap: wrap;
@@ -77,7 +88,7 @@
     font-size: 1rem;
     line-height: 1.7;
     color: #4a5568;
-    text-align: justify;
+    text-align: left;
 }
 
 /* Estados de Loading e Erro */
@@ -95,12 +106,50 @@
     color: #c53030;
 }
 
-/* Responsividade: No celular/tablet, empilha capa e textos */
+/* Botões do estado de erro (ex.: "Tentar novamente") */
+.detalhes-acoes {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.detalhes-acoes button {
+    padding: 0.5rem 1rem;
+    border: 1px solid currentColor;
+    border-radius: 6px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+}
+
+.detalhes-acoes button:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.detalhes-acoes button:focus-visible {
+    outline: 3px solid #4d90fe;
+    outline-offset: 2px;
+}
+
+/* Telas maiores: texto justificado só onde há espaço suficiente */
+@media (min-width: 641px) {
+    .detalhes-sinopse-texto {
+        text-align: justify;
+    }
+}
+
+/* Responsividade: no celular/tablet, empilha capa e textos */
 @media (max-width: 640px) {
     .detalhes-header {
         flex-direction: column;
         align-items: center;
         text-align: center;
+    }
+
+    .detalhes-capa {
+        max-width: 100%;
     }
 
     .detalhes-metadados {
