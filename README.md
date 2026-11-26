@@ -124,7 +124,23 @@ O React Router DOM é responsável pela navegação entre as páginas, incluindo
 
 ## API externa
 
-API de consulta de livros — identificação a ser confirmada pela equipe responsável pela integração.
+O projeto utiliza a Google Books API para consultar
+informações sobre livros.
+
+- API: Google Books API
+- URL base: https://www.googleapis.com/books/v1
+- Cliente HTTP: Axios
+- Formato dos dados: JSON
+
+A aplicação utiliza a variável de ambiente
+VITE_GOOGLEBOOKS_KEY para configurar a chave da API.
+
+Para configurar a chave, crie um arquivo .env.local
+na raiz do projeto:
+
+VITE_GOOGLEBOOKS_KEY=sua_chave_aqui
+
+Não compartilhe a chave real no repositório.
 
 ## Organização e desenvolvimento
 

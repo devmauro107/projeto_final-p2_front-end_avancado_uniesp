@@ -1,4 +1,5 @@
-import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
+
+import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import { Link } from 'react-router-dom';
 
@@ -11,10 +12,7 @@ function App() {
         <Toolbar sx={{ flexWrap: 'wrap', gap: 1, py: 1 }}>
           <MenuBookIcon sx={{ mr: 1 }} />
 
-          <Typography
-            variant="h6"
-            sx={{ flexGrow: 1 }}
-          >
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
             Biblioteca Digital
           </Typography>
 
@@ -22,19 +20,7 @@ function App() {
             Início
           </Button>
 
-          <Button
-            color="inherit"
-            component={Link}
-            to="/livro/1"
-          >
-            Detalhes
-          </Button>
-
-          <Button
-            color="inherit"
-            component={Link}
-            to="/sobre"
-          >
+          <Button color="inherit" component={Link} to="/sobre">
             Sobre
           </Button>
         </Toolbar>

@@ -1,5 +1,8 @@
+
 import { Routes, Route, Link, useParams } from 'react-router-dom';
 import { Box, Button, Container, Typography } from '@mui/material';
+
+import { Details } from '../pages/details/Details';
 
 function Home() {
   return (
@@ -14,7 +17,7 @@ function Home() {
 
       <Button
         component={Link}
-        to="/livro/1"
+        to="/livro/zyTCA1FPjgYC"
         variant="contained"
         sx={{ mt: 2 }}
       >
@@ -24,18 +27,12 @@ function Home() {
   );
 }
 
-function Details() {
-  const { id } = useParams();
+function DetailsPage() {
+  const { id } = useParams<{ id: string }>();
 
   return (
     <Box>
-      <Typography variant="h4" color="primary" gutterBottom>
-        Detalhes do livro
-      </Typography>
-
-      <Typography>
-        Identificador do livro: {id}
-      </Typography>
+      <Details key={id} idLivro={id} />
 
       <Button
         component={Link}
@@ -92,7 +89,7 @@ export default function AppRoutes() {
     <Container maxWidth="lg" sx={{ py: 6 }}>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/livro/:id" element={<Details />} />
+        <Route path="/livro/:id" element={<DetailsPage />} />
         <Route path="/sobre" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
